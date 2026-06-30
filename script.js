@@ -8,9 +8,7 @@ const adVideo = document.getElementById("adVideo");
 // بارگذاری لوگو و ویدیو
 const savedLogo = localStorage.getItem("logo");
 if (savedLogo) logoPreview.src = savedLogo;
-
-const savedVideo = localStorage.getItem("video");
-if (savedVideo) adVideo.src = savedVideo;
+adVideo.src = "video.mp4";
 
 // نمایش محصولات
 function renderProducts() {
@@ -72,8 +70,7 @@ function saveProduct(){
 
     const imageFile=document.getElementById("image").files[0];
     const logoFile=document.getElementById("logo").files[0];
-    const videoFile=document.getElementById("video").files[0];
-
+    
     if(name==="" || price===""){
         alert("نام و قیمت را وارد کنید");
         return;
@@ -128,21 +125,9 @@ function saveProduct(){
 
     }
 
-    // ذخیره ویدیو
-    if(videoFile){
+    
 
-        const v=new FileReader();
-
-        v.onload=function(ev){
-
-            adVideo.src=ev.target.result;
-            localStorage.setItem("video",ev.target.result);
-
-        }
-
-        v.readAsDataURL(videoFile);
-
-    }
+    
 
 }
 function deleteProduct(index){
