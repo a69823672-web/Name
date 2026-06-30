@@ -5,33 +5,38 @@ const menu = document.getElementById("menu");
 const logoPreview = document.getElementById("logoPreview");
 const adVideo = document.getElementById("adVideo");
 
-// بارگذاری لوگو و ویدیو
+// بارگذاری لوگو
 const savedLogo = localStorage.getItem("logo");
-if (savedLogo) logoPreview.src = savedLogo;
+if (savedLogo) {
+    logoPreview.src = savedLogo;
+}
+
+// بارگذاری ویدیو از فایل پروژه
 adVideo.src = "video.mp4";
 
 // نمایش محصولات
 function renderProducts() {
+
     menu.innerHTML = "";
 
     const list = currentCategory === "all"
         ? products
         : products.filter(p => p.category === currentCategory);
 
-    list.forEach(product => {
+    list.forEach((product, index) => {
 
         const card = document.createElement("div");
         card.className = "card";
 
         card.innerHTML = `
-<img src="${product.image}">
-<h3>${product.name}</h3>
-<p>${product.price} تومان</p>
+            <img src="${product.image}">
+            <h3>${product.name}</h3>
+            <p>${product.price} تومان</p>
 
-<button class="deleteBtn" onclick="deleteProduct(${index})">
-حذف محصول
-</button>
-`;
+            <button class="deleteBtn" onclick="deleteProduct(${index})">
+                حذف محصول
+            </button>
+        `;
 
         menu.appendChild(card);
 
@@ -70,7 +75,7 @@ function saveProduct(){
 
     const imageFile=document.getElementById("image").files[0];
     const logoFile=document.getElementById("logo").files[0];
-    
+
     if(name==="" || price===""){
         alert("نام و قیمت را وارد کنید");
         return;
@@ -82,54 +87,46 @@ function saveProduct(){
     }
 
     const reader=new FileReader();
-
-    reader.onload=function(e){
+        reader.onload = function(e){
 
         products.push({
-
-            name:name,
-            price:price,
-            category:category,
-            image:e.target.result
-
+            name: name,
+            price: price,
+            category: category,
+            image: e.target.result
         });
 
-        localStorage.setItem("products",JSON.stringify(products));
+        localStorage.setItem("products", JSON.stringify(products));
 
         renderProducts();
 
-        // پاک کردن فرم
-        document.getElementById("name").value="";
-        document.getElementById("price").value="";
-        document.getElementById("image").value="";
+        document.getElementById("name").value = "";
+        document.getElementById("price").value = "";
+        document.getElementById("image").value = "";
 
         alert("محصول ثبت شد");
 
-    }
+    };
 
     reader.readAsDataURL(imageFile);
 
-    // ذخیره لوگو
     if(logoFile){
 
-        const r=new FileReader();
+        const r = new FileReader();
 
-        r.onload=function(ev){
+        r.onload = function(ev){
 
-            logoPreview.src=ev.target.result;
-            localStorage.setItem("logo",ev.target.result);
+            logoPreview.src = ev.target.result;
+            localStorage.setItem("logo", ev.target.result);
 
-        }
+        };
 
         r.readAsDataURL(logoFile);
 
     }
 
-    
-
-    
-
 }
+
 function deleteProduct(index){
 
     const pass = prompt("رمز مدیریت را وارد کنید");
@@ -141,12 +138,14 @@ function deleteProduct(index){
 
     if(confirm("آیا از حذف این محصول مطمئن هستید؟")){
 
-        products.splice(index,1);
+        products.splice(index, 1);
 
         localStorage.setItem("products", JSON.stringify(products));
 
         renderProducts();
 
+        alert("محصول حذف شد");
+
     }
 
-} 
+}
