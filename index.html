@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>کافه پرواز</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<img id="logoPreview" class="logo" src="" alt="لوگو">
+
+<h1>کافه پرواز</h1>
+
+<h3>شرکت هوانوردی عقاب آسمان شمال</h3>
+
+</header>
+
+<nav class="categories">
+
+<button onclick="filterCategory('all')">همه</button>
+
+<button onclick="filterCategory('نوشیدنی گرم بر پایه قهوه')">نوشیدنی گرم بر پایه قهوه</button>
+
+<button onclick="filterCategory('نوشیدنی سرد بر پایه قهوه')">نوشیدنی سرد بر پایه قهوه</button>
+
+<button onclick="filterCategory('نوشیدنی‌های شرکتی')">نوشیدنی‌های شرکتی</button>
+
+<button onclick="filterCategory('تنقلات')">تنقلات</button>
+
+<button onclick="filterCategory('غذای حاضری')">غذای حاضری</button>
+
+<button onclick="filterCategory('سایر')">سایر</button>
+
+</nav>
+
+<main>
+
+<div id="menu" class="menu"></div>
+
+<div class="video-box">
+
+<video id="adVideo" controls></video>
+
+</div>
+
+</main>
+
+<button class="adminButton" onclick="openAdmin()">
+
+پنل مدیریت
+
+</button>
+
+<div id="adminPanel" class="panel hidden">
+
+<h2>پنل مدیریت</h2>
+
+<input id="name" type="text" placeholder="نام محصول">
+
+<input id="price" type="number" placeholder="قیمت محصول">
+
+<select id="category">
+
+<option>نوشیدنی گرم بر پایه قهوه</option>
+
+<option>نوشیدنی سرد بر پایه قهوه</option>
+
+<option>نوشیدنی‌های شرکتی</option>
+
+<option>تنقلات</option>
+
+<option>غذای حاضری</option>
+
+<option>سایر</option>
+
+</select>
+
+<label>عکس محصول (JPG)</label>
+
+<input id="image" type="file" accept=".jpg,.jpeg">
+
+<label>عکس لوگو (JPG)</label>
+
+<input id="logo" type="file" accept=".jpg,.jpeg">
+
+<label>ویدیو تبلیغاتی (MP4)</label>
+
+<input id="video" type="file" accept=".mp4">
+
+<button onclick="saveProduct()">
+
+ثبت محصول
+
+</button>
+
+<button onclick="closeAdmin()">
+
+بستن
+
+</button>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
