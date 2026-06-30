@@ -1,0 +1,168 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:tahoma,sans-serif;
+}
+
+body{
+background:#2b2b2b;
+color:#fff;
+}
+
+header{
+text-align:center;
+padding:20px;
+}
+
+.logo{
+width:120px;
+height:120px;
+border-radius:50%;
+border:3px solid gold;
+object-fit:cover;
+background:#444;
+}
+
+header h1{
+color:gold;
+margin-top:10px;
+}
+
+header h3{
+color:#ddd;
+margin-top:5px;
+font-size:15px;
+}
+
+.categories{
+display:flex;
+overflow-x:auto;
+gap:10px;
+padding:15px;
+justify-content:center;
+}
+
+.categories button{
+background:#000;
+color:#fff;
+border:2px solid gold;
+border-radius:30px;
+padding:10px 20px;
+cursor:pointer;
+white-space:nowrap;
+transition:.3s;
+}
+
+.categories button:hover{
+background:gold;
+color:#000;
+}
+
+.menu{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:#3a3a3a;
+border:2px solid gold;
+border-radius:15px;
+overflow:hidden;
+}
+
+.card img{
+width:100%;
+height:300px;
+object-fit:cover;
+display:block;
+}
+
+.card h3{
+padding:10px;
+color:gold;
+font-size:20px;
+text-align:center;
+}
+
+.card p{
+padding-bottom:15px;
+text-align:center;
+font-size:18px;
+}
+
+.video-box{
+padding:20px;
+}
+
+video{
+width:100%;
+border:2px solid gold;
+border-radius:10px;
+}
+
+.adminButton{
+position:fixed;
+bottom:20px;
+left:20px;
+background:gold;
+color:#000;
+border:none;
+padding:12px 20px;
+border-radius:30px;
+cursor:pointer;
+font-size:16px;
+font-weight:bold;
+}
+
+.panel{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:350px;
+background:#1e1e1e;
+padding:20px;
+border:2px solid gold;
+border-radius:15px;
+z-index:999;
+}
+
+.hidden{
+display:none;
+}
+
+.panel h2{
+text-align:center;
+margin-bottom:15px;
+color:gold;
+}
+
+.panel input,
+.panel select{
+width:100%;
+padding:10px;
+margin-bottom:12px;
+border-radius:8px;
+border:none;
+}
+
+.panel label{
+display:block;
+margin-bottom:5px;
+color:#ddd;
+}
+
+.panel button{
+width:100%;
+padding:12px;
+margin-top:10px;
+background:gold;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+font-weight:bold;
+  }
