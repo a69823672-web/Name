@@ -166,3 +166,24 @@ cursor:pointer;
 font-size:16px;
 font-weight:bold;
   }
+.deleteBtn{
+
+background:#c40000;
+
+color:white;
+
+border:none;
+
+padding:10px;
+
+border-radius:8px;
+
+width:90%;
+
+margin:10px auto;
+
+display:block;
+
+cursor:pointer;
+
+}
