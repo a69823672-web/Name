@@ -26,10 +26,14 @@ function renderProducts() {
         card.className = "card";
 
         card.innerHTML = `
-            <img src="${product.image}">
-            <h3>${product.name}</h3>
-            <p>${product.price} تومان</p>
-        `;
+<img src="${product.image}">
+<h3>${product.name}</h3>
+<p>${product.price} تومان</p>
+
+<button class="deleteBtn" onclick="deleteProduct(${index})">
+حذف محصول
+</button>
+`;
 
         menu.appendChild(card);
 
@@ -141,3 +145,23 @@ function saveProduct(){
     }
 
 }
+function deleteProduct(index){
+
+    const pass = prompt("رمز مدیریت را وارد کنید");
+
+    if(pass !== "4030"){
+        alert("رمز اشتباه است");
+        return;
+    }
+
+    if(confirm("آیا از حذف این محصول مطمئن هستید؟")){
+
+        products.splice(index,1);
+
+        localStorage.setItem("products", JSON.stringify(products));
+
+        renderProducts();
+
+    }
+
+} 
