@@ -1,4 +1,5 @@
 let products = JSON.parse(localStorage.getItem("products")) || [];
+console.log("Products:", products);
 let currentCategory = "all";
 
 const menu = document.getElementById("menu");
