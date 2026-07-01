@@ -97,7 +97,12 @@ function saveProduct(){
             image: e.target.result
         });
 
-        localStorage.setItem("products", JSON.stringify(products));
+        try {
+    localStorage.setItem("products", JSON.stringify(products));
+} catch (e) {
+    alert("فضای ذخیره‌سازی پر شده است. لطفاً از عکس‌های کم‌حجم‌تر استفاده کنید.");
+    return;
+}
 
         renderProducts();
 
