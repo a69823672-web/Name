@@ -1,3 +1,4 @@
+localStorage.clear();
 let products = JSON.parse(localStorage.getItem("products")) || [];
 console.log("Products:", products);
 let currentCategory = "all";
@@ -87,25 +88,49 @@ function saveProduct(){
         return;
     }
 
-    const reader=new FileReader();
-        reader.onload = function(e){
+    
+const reader = new FileReader();
+
+reader.onload = function(e){
+
+    const img = new Image();
+
+    img.onload = function(){
+
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+
+        const maxWidth = 300;
+        const scale = maxWidth / img.width;
+
+        canvas.width = maxWidth;
+        canvas.height = img.height * scale;
+
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        const smallImage = canvas.toDataURL("image/jpeg", 0.6);
 
         products.push({
             name: name,
             price: price,
             category: category,
-            image: e.target.result
+            image: smallImage
         });
 
-        try {
-    localStorage.setItem("products", JSON.stringify(products));
-} catch (e) {
-    alert("فضای ذخیره‌سازی پر شده است. لطفاً از عکس‌های کم‌حجم‌تر استفاده کنید.");
-    return;
-}
-
+        localStorage.setItem("products", JSON.stringify(products));
         renderProducts();
 
+        document.getElementById("name").value = "";
+        document.getElementById("price").value = "";
+        document.getElementById("image").value = "";
+
+        alert("محصول ثبت شد");
+    };
+
+    img.src = e.target.result;
+};
+
+reader.readAsDataURL(imageFile);
         document.getElementById("name").value = "";
         document.getElementById("price").value = "";
         document.getElementById("image").value = "";
